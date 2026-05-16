@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptStudio - Crie Artes Profissionais com IA em Segundos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #d4af59;
+      --accent: #e8c547;
+      --bg: #050505;
+      --bg-2: #0a0a0a;
+      --card-bg: #111111;
+      --text: #ffffff;
+      --text-dim: #888888;
+      --success: #22c55e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 900;
+    }
+
+    .logo span { color: var(--primary); }
+
+    .header-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: opacity 0.3s;
+    }
+
+    .header-link:hover { opacity: 0.8; }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 60px 0 50px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.5;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #000;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 12px 30px rgba(212, 175, 89, 0.25);
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(212, 175, 89, 0.35);
+    }
+
+    /* ─── SECURE BADGE ─── */
+    .secure-badge {
+      margin-top: 12px;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .secure-badge i { color: var(--success); }
+
+    /* ─── FLOATING CTA BAR ─── */
+    .floating-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 999;
+      box-shadow: 0 -8px 24px rgba(212, 175, 89, 0.2);
+      animation: slideUp 0.4s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .floating-cta-content {
+      flex: 1;
+      color: #000;
+    }
+
+    .floating-cta-title {
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 2px;
+    }
+
+    .floating-cta-urgency {
+      font-size: 0.7rem;
+      font-weight: 700;
+      opacity: 0.9;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .floating-cta-urgency i {
+      animation: pulse 1s infinite;
+    }
+
+    .floating-cta-button {
+      background: #000;
+      color: var(--primary);
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+
+    .floating-cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .floating-cta {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .floating-cta-button {
+        width: 100%;
+      }
+    }
+
+    /* ─── SLIDER ─── */
+    .slider-section {
+      padding: 40px 0;
+      position: relative;
+    }
+
+    .slider-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .slider-container {
+      width: 100%;
+      overflow: hidden;
+      padding: 10px 0 20px;
+    }
+
+    .slider-track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.5s ease-out;
+      will-change: transform;
+    }
+
+    .slide {
+      width: 240px;
+      flex-shrink: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .slide:hover {
+      border-color: rgba(212, 175, 89, 0.4);
+    }
+
+    .slide img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(212, 175, 89, 0.1);
+      border: 1px solid rgba(212, 175, 89, 0.3);
+      border-radius: 50%;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    .slider-btn:hover {
+      background: var(--primary);
+      color: #000;
+      border-color: var(--primary);
+    }
+
+    .slider-btn.prev { left: 0; }
+    .slider-btn.next { right: 0; }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      width: 16px;
+      border-radius: 10px;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-section {
+      padding: 32px 0;
+      background: var(--bg-2);
+      border-top: 1px solid rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+
+    .section-title p {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      padding: 20px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .step-card:hover {
+      border-color: rgba(212, 175, 89, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+      margin: 0 auto 10px;
+    }
+
+    .step-card h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .step-card p {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .step-icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    /* ─── NICHOS SECTION ─── */
+    .nichos-section {
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .nichos-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .nichos-subtitle {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+
+    .nichos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .nicho-card {
+      background: var(--card-bg);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: default;
+    }
+
+    .nicho-card:hover {
+      border-color: var(--primary);
+      background: rgba(212, 175, 89, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .nicho-emoji {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* ─── PRICING ─── */
+    .pricing-section {
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .price-card {
+      max-width: 420px;
+      margin: 0 auto;
+      background: linear-gradient(160deg, #161616 0%, #0a0a0a 100%);
+      padding: 44px 36px;
+      border-radius: 24px;
+      border: 1.5px solid rgba(212, 175, 89, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card::before {
+      content: 'VITALÍCIO';
+      position: absolute;
+      top: 20px;
+      right: -35px;
+      background: var(--primary);
+      color: #000;
+      padding: 6px 90px;
+      transform: rotate(45deg);
+      font-size: 0.55rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .new-price {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+
+    .price-label {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 28px;
+      text-align: left;
+      max-width: 240px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .features-list li i {
+      color: var(--success);
+      font-size: 0.75rem;
+    }
+
+    .secure-text {
+      margin-top: 14px;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .secure-text i { color: var(--success); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* ─── BODY PADDING ─── */
+    body.has-floating-cta {
+      padding-bottom: 70px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .nichos-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="logo"><span>Prompt</span>Studio</div>
+      <a href="https://instagram.com/dhdesignerpro" target="_blank" class="header-link">
+        @dhdesignerpro
+      </a>
+    </header>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+      <h1>Crie <span>Artes Profissionais</span><br>com IA em Segundos</h1>
+      <p class="hero-subtitle">Sem designer caro. Sem complicação. Apenas dados + prompt + IA = arte pronta.</p>
+      <a href="#comprar" class="cta-button">
+        <i class="fas fa-rocket"></i> COMPRAR AGORA
+      </a>
+      <div class="secure-badge">
+        <i class="fas fa-shield-alt"></i> Compra 100% Segura
+      </div>
+    </section>
+
+    <!-- ─── SLIDER ─── -->
+    <section class="slider-section">
+      <div class="slider-wrapper">
+        <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-container">
+          <div class="slider-track" id="sliderTrack">
+            <div class="slide"><img src="assets/exemplos/marmitex.jpg" alt="Arte"></div>
+            <div class="slide"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
+            <div class="slide"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
+            <div class="slide"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
+            <div class="slide"><img src="assets/exemplos/art3.jpg" alt="Arte"></div>
+            <div class="slide"><img src="assets/exemplos/art5.jpg" alt="Arte"></div>
+            <div class="slide"><img src="assets/exemplos/art7.png" alt="Arte"></div>
+          </div>
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section class="how-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Como Funciona</h2>
+        <p>Tão simples que qualquer um consegue fazer</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">📝</div>
+          <h3>Preencha os Dados</h3>
+          <p>Nome do negócio, promoção, descrição, preço, Instagram. Tudo em um formulário simples.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">📋</div>
+          <h3>Copie o Prompt</h3>
+          <p>O PromptStudio gera automaticamente um "Prompt Mestre" profissional e pronto para usar.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">✨</div>
+          <h3>Cole na IA e Gere</h3>
+          <p>Cole o prompt no ChatGPT ou Gemini. A IA cria sua arte profissional em 2 minutos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── NICHOS ─── -->
+  <div class="container">
+    <section class="nichos-section">
+      <h2 class="nichos-title">Funciona para Qualquer Nicho</h2>
+      <p class="nichos-subtitle">Hamburgueria, Pizzaria, Restaurante, Café, Loja... qualquer negócio.</p>
+
+      <div class="nichos-grid">
+        <div class="nicho-card"><span class="nicho-emoji">🍔</span> Hamburgueria</div>
+        <div class="nicho-card"><span class="nicho-emoji">🍕</span> Pizzaria</div>
+        <div class="nicho-card"><span class="nicho-emoji">🍣</span> Sushi</div>
+        <div class="nicho-card"><span class="nicho-emoji">🍧</span> Açaí</div>
+        <div class="nicho-card"><span class="nicho-emoji">🥪</span> Lanchonete</div>
+        <div class="nicho-card"><span class="nicho-emoji">🍽️</span> Restaurante</div>
+        <div class="nicho-card"><span class="nicho-emoji">🍱</span> Marmitaria</div>
+        <div class="nicho-card"><span class="nicho-emoji">🥟</span> Pastelaria</div>
+        <div class="nicho-card"><span class="nicho-emoji">🌭</span> Hot Dogs</div>
+        <div class="nicho-card"><span class="nicho-emoji">🍢</span> Espetinho</div>
+        <div class="nicho-card"><span class="nicho-emoji">🍗</span> Frango Assado</div>
+        <div class="nicho-card"><span class="nicho-emoji">☕</span> Cafeteria</div>
+        <div class="nicho-card"><span class="nicho-emoji">🍰</span> Confeitaria</div>
+        <div class="nicho-card"><span class="nicho-emoji">🛵</span> Delivery</div>
+        <div class="nicho-card"><span class="nicho-emoji">⚡</span> Fast Food</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ─── PRICING ─── -->
+  <div class="container">
+    <section class="pricing-section" id="comprar">
+      <div class="price-card">
+        <div class="old-price">De R$ 97,00</div>
+        <div class="new-price">R$ 27,00</div>
+        <span class="price-label">PAGAMENTO ÚNICO — ACESSO VITALÍCIO</span>
+
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle"></i> Gerador de Prompts Ilimitado</li>
+          <li><i class="fas fa-check-circle"></i> Guia de Uso Completo</li>
+          <li><i class="fas fa-check-circle"></i> Atualizações Gratuitas</li>
+          <li><i class="fas fa-check-circle"></i> Suporte via Instagram</li>
+        </ul>
+
+        <button class="cta-button" style="width: 100%; justify-content: center;">
+          COMPRAR AGORA
+        </button>
+
+        <div class="secure-text">
+          <i class="fas fa-shield-alt"></i> Compra 100% Segura
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ─── FLOATING CTA BAR ─── -->
+  <div class="floating-cta">
+    <div class="floating-cta-content">
+      <div class="floating-cta-title">💥 R$ 27,00 - Promoção de Lançamento</div>
+      <div class="floating-cta-urgency">
+        <i class="fas fa-fire"></i> Oferta válida por tempo limitado
+      </div>
+    </div>
+    <a href="#comprar" class="floating-cta-button">COMPRAR AGORA</a>
+  </div>
+
+  <footer>
+    <p>Desenvolvido por <a href="https://instagram.com/dhdesignerpro" target="_blank">@dhdesignerpro</a></p>
+    <p style="margin-top: 8px;">© 2026 PromptStudio. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // SLIDER LOGIC
+    const track = document.getElementById('sliderTrack');
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('sliderDots');
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+    
+    let currentIndex = 0;
+    let autoPlayInterval;
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function updateSlider() {
+      const slideWidth = slides[0].offsetWidth + 16; // width + gap
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      if (currentIndex >= slides.length) currentIndex = 0;
+      if (currentIndex < 0) currentIndex = slides.length - 1;
+      updateSlider();
+      resetAutoPlay();
+    }
+
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 4000);
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
+    }
+
+    startAutoPlay();
+
+    // Resize handler
+    window.addEventListener('resize', updateSlider);
+
+    // Add padding to body for floating CTA
+    document.body.classList.add('has-floating-cta');
+  </script>
+</body>
+</html>
