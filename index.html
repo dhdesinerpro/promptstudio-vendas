@@ -77,7 +77,7 @@
     .header-content {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
     }
 
     .logo {
@@ -169,7 +169,6 @@
       margin: 0 auto 28px;
       line-height: 1.6;
       font-weight: 400;
-      white-space: nowrap;
       padding: 0 16px;
     }
 
@@ -283,6 +282,35 @@
       border-bottom: 1px solid var(--border-light);
     }
 
+    .how-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .how-description {
+      background: rgba(255, 193, 7, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+    }
+
+    .how-description p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .how-description p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── PRICING ─── */
+    .pricing-section {
+      padding: 60px 0;
+    }
+
     .section-header {
       text-align: center;
       margin-bottom: 48px;
@@ -304,122 +332,12 @@
       line-height: 1.8;
     }
 
-    .how-content {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .how-description {
-      background: rgba(255, 193, 7, 0.05);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 40px;
-      backdrop-filter: blur(10px);
-    }
-
-    .how-description h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--primary);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .how-description p {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    .how-description p:last-child {
-      margin-bottom: 0;
-    }
-
-    .how-description ul {
-      list-style: none;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-    }
-
-    .how-description li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 12px;
-      font-size: 15px;
-      color: var(--text-secondary);
-    }
-
-    .how-description li i {
-      color: var(--primary);
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .step-card {
-      background: rgba(255, 193, 7, 0.05);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      backdrop-filter: blur(10px);
-      text-align: center;
-      transition: all 0.3s;
-    }
-
-    .step-card:hover {
-      border-color: var(--primary);
-      background: rgba(255, 193, 7, 0.08);
-      transform: translateY(-4px);
-    }
-
-    .step-number {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 900;
-      color: #000;
-      margin: 0 auto 16px;
-      box-shadow: 0 8px 24px rgba(255, 193, 7, 0.2);
-    }
-
-    .step-card h3 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .step-card p {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    /* ─── PRICING ─── */
-    .pricing-section {
-      padding: 45px 0;
-    }
-
     .pricing-card {
       background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 193, 7, 0.02) 100%);
       border: 2px solid var(--primary);
       border-radius: 24px;
       padding: 48px;
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
       position: relative;
       overflow: hidden;
@@ -486,6 +404,62 @@
     .features-list i {
       color: var(--primary);
       font-size: 16px;
+    }
+
+    /* ─── BONUS SECTION ─── */
+    .bonus-section {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 2px solid var(--border);
+    }
+
+    .bonus-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 24px;
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .bonus-card {
+      background: rgba(255, 193, 7, 0.08);
+      border: 1px solid var(--primary);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .bonus-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .bonus-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .bonus-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #000;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
     }
 
     /* ─── FLOATING BAR ─── */
@@ -581,10 +555,6 @@
         margin-bottom: 60px;
       }
 
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
-
       .floating-bar {
         flex-direction: column;
         gap: 12px;
@@ -606,6 +576,10 @@
 
       .how-description {
         padding: 24px;
+      }
+
+      .bonus-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -635,8 +609,8 @@
         LANÇAMENTO EXCLUSIVO
       </div>
 
-      <h1>Crie Artes <span class="highlight">Profissionais</span> em Segundos</h1>
-      <p class="hero-subtitle">Preencha os dados - Copie o prompt - Gere a arte</p>
+      <h1>Crie Artes <span class="highlight">Profissionais</span> que Vendem</h1>
+      <p class="hero-subtitle">De forma simples e rápida</p>
 
       <div class="cta-group">
         <button class="btn btn-primary">
@@ -698,53 +672,11 @@
   <!-- ─── HOW IT WORKS ─── -->
   <section class="how-section">
     <div class="container">
-      <div class="section-header">
-        <h2>Como Funciona</h2>
-        <p>Transforme seus dados em artes profissionais que vendem, sem precisar de designer ou conhecimento em IA</p>
-      </div>
-
       <div class="how-content">
         <div class="how-description">
-          <h3>O Que Você Realmente Está Comprando</h3>
-          <p><strong>PromptStudio</strong> é um gerador inteligente que transforma informações simples do seu negócio em <strong>prompts profissionais de nível designer</strong>. Você não precisa entender de IA ou tecnologia para criar artes que impressionam.</p>
+          <p>Preencha os dados básicos do seu negócio, o sistema gera um prompt profissional e você copia para qualquer IA (ChatGPT, Gemini, Midjourney). O resultado? Artes únicas, exclusivas e de qualidade profissional — exatamente como se um designer experiente tivesse criado.</p>
           
-          <p>O processo é simples: você preenche dados básicos (nome do prato, ingredientes, promoção, etc.), o sistema gera um prompt otimizado e profissional, e você copia esse prompt para qualquer IA (ChatGPT, Gemini, Midjourney). O resultado? <strong>Artes únicas, exclusivas e de qualidade profissional</strong> — exatamente como se um designer experiente tivesse criado.</p>
-          
-          <p>Diferente das artes genéricas que qualquer um consegue gerar, nossas artes são <strong>diferenciadas, persuasivas e otimizadas para conversão</strong>. Perfeito para quem tem pouco orçamento para investir em designer profissional, mas quer resultados que parecem ter custado caro.</p>
-          
-          <ul>
-            <li><i class="fas fa-check"></i> <strong>Sem conhecimento técnico necessário</strong> — interface intuitiva e fácil</li>
-            <li><i class="fas fa-check"></i> <strong>Artes profissionais em minutos</strong> — não em horas ou dias</li>
-            <li><i class="fas fa-check"></i> <strong>Resultados diferenciados</strong> — não genéricos como outras ferramentas</li>
-            <li><i class="fas fa-check"></i> <strong>Economia real</strong> — uma fração do preço de um designer freelancer</li>
-            <li><i class="fas fa-check"></i> <strong>Ilimitado</strong> — crie quantas artes quiser, sem restrições</li>
-          </ul>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Preencha os Dados</h3>
-            <p>Informações básicas do seu prato ou promoção</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>Gere o Prompt</h3>
-            <p>Sistema cria prompt profissional automaticamente</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>Cole na IA</h3>
-            <p>ChatGPT, Gemini ou qualquer ferramenta de IA</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">4</div>
-            <h3>Sua Arte Pronta</h3>
-            <p>Resultado profissional e diferenciado</p>
-          </div>
+          <p>Diferente das artes genéricas que qualquer um consegue gerar, nossas artes são diferenciadas, persuasivas e otimizadas para conversão. Perfeito para quem tem pouco orçamento para investir em designer profissional, mas quer resultados que parecem ter custado caro.</p>
         </div>
       </div>
     </div>
@@ -764,13 +696,30 @@
         <span class="price-label">PAGAMENTO ÚNICO — ACESSO VITALÍCIO</span>
 
         <ul class="features-list">
-          <li><i class="fas fa-check"></i> Gerador de Prompts Ilimitado</li>
-          <li><i class="fas fa-check"></i> Guia de Uso Completo</li>
-          <li><i class="fas fa-check"></i> Atualizações Gratuitas</li>
-          <li><i class="fas fa-check"></i> Suporte via Instagram</li>
+          <li><i class="fas fa-check"></i> Gerador de Prompts Personalizados</li>
+          <li><i class="fas fa-check"></i> Guia Rápido de Uso</li>
+          <li><i class="fas fa-check"></i> Suporte via WhatsApp</li>
         </ul>
 
-        <button class="btn btn-primary" style="width: 100%;">
+        <!-- BONUS SECTION -->
+        <div class="bonus-section">
+          <div class="bonus-title">🎁 BÔNUS EXCLUSIVOS</div>
+          <div class="bonus-grid">
+            <div class="bonus-card">
+              <span class="bonus-badge">BÔNUS 01</span>
+              <h3>Precificadora Inteligente</h3>
+              <p>Calculadora automática para definir o preço certo dos seus produtos e maximizar seus lucros sem complicações.</p>
+            </div>
+
+            <div class="bonus-card">
+              <span class="bonus-badge">BÔNUS 02</span>
+              <h3>Guia: Venda Todo Dia</h3>
+              <p>Método simples e prático para criar promoções, conteúdos virais, artes e estratégias que funcionam para atrair clientes locais e aumentar pedidos. Tudo explicado de forma fácil, sem termos técnicos.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="width: 100%; margin-top: 32px;">
           <i class="fas fa-lock"></i> Comprar Agora - 100% Seguro
         </button>
       </div>
