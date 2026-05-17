@@ -288,11 +288,18 @@
     }
 
     .how-description {
-      background: rgba(255, 193, 7, 0.05);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
+      background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 193, 7, 0.02) 100%);
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      padding: 48px;
       backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(255, 193, 7, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .how-description:hover {
+      box-shadow: 0 16px 48px rgba(255, 193, 7, 0.15);
+      border-color: var(--primary);
     }
 
     .how-description h3 {
@@ -301,48 +308,6 @@
       color: var(--text);
       margin-bottom: 28px;
       font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .how-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .how-step {
-      background: rgba(255, 193, 7, 0.08);
-      border: 1px solid var(--primary);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      transition: all 0.3s;
-    }
-
-    .how-step:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(255, 193, 7, 0.15);
-      background: rgba(255, 193, 7, 0.12);
-    }
-
-    .how-step-icon {
-      font-size: 36px;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .how-step h4 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .how-step p {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
     }
 
     .how-description p {
@@ -726,33 +691,7 @@
         <div class="how-description">
           <h3>Como Funciona a Ferramenta</h3>
           
-          <div class="how-steps">
-            <div class="how-step">
-              <span class="how-step-icon">🔗</span>
-              <h4>Receba o Acesso</h4>
-              <p>Link direto ao gerador</p>
-            </div>
-            <div class="how-step">
-              <span class="how-step-icon">📝</span>
-              <h4>Preencha os Dados</h4>
-              <p>Informações do negócio</p>
-            </div>
-            <div class="how-step">
-              <span class="how-step-icon">✨</span>
-              <h4>Gere o Prompt</h4>
-              <p>Sistema cria automático</p>
-            </div>
-            <div class="how-step">
-              <span class="how-step-icon">🎨</span>
-              <h4>Cole na IA</h4>
-              <p>ChatGPT ou Gemini</p>
-            </div>
-            <div class="how-step">
-              <span class="how-step-icon">🚀</span>
-              <h4>Arte Profissional</h4>
-              <p>Resultado exclusivo</p>
-            </div>
-          </div>
+          <p>Após a compra, você recebe um link de acesso direto ao gerador. Depois, é simples: preencha os dados básicos do seu negócio, o sistema gera um prompt profissional e você copia para qualquer IA (ChatGPT, Gemini, Midjourney). O resultado? Artes únicas, exclusivas e de qualidade profissional — exatamente como se um designer experiente tivesse criado.</p>
           
           <p>Diferente das artes genéricas que qualquer um consegue gerar, nossas artes são diferenciadas, persuasivas e otimizadas para conversão. Perfeito para quem tem pouco orçamento para investir em designer profissional, mas quer resultados que parecem ter custado caro.</p>
         </div>
