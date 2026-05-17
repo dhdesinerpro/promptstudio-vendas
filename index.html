@@ -225,90 +225,54 @@
       }
     }
 
-    .slider-wrapper {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
+    /* Marquee Infinito */
+    .marquee-wrapper {
+      overflow: hidden;
+      margin-bottom: 20px;
     }
 
-    .slider-container {
+    .marquee-track {
+      display: flex;
+      gap: 16px;
+      animation: marquee-scroll 40s linear infinite;
+    }
+
+    .marquee-left {
+      animation-direction: normal;
+    }
+
+    .marquee-right {
+      animation-direction: reverse;
+    }
+
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      flex-shrink: 0;
+      width: 200px;
+      height: 280px;
+      border-radius: 12px;
       overflow: hidden;
-      border-radius: 20px;
       background: rgba(255, 193, 7, 0.05);
       border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-      max-width: 400px;
-      margin: 0 auto;
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
 
-    .slider-track {
-      display: flex;
-      gap: 0;
-      transition: transform 0.5s ease-out;
-      will-change: transform;
+    .marquee-item:hover {
+      transform: scale(1.05) translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 32px rgba(255, 193, 7, 0.2);
     }
 
-    .slide {
-      min-width: 100%;
-      aspect-ratio: 3/4;
-      overflow: hidden;
-    }
-
-    .slide img {
+    .marquee-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      background: rgba(255, 193, 7, 0.15);
-      border: 1.5px solid rgba(255, 193, 7, 0.3);
-      border-radius: 50%;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .slider-btn:hover {
-      background: var(--primary);
-      color: #000;
-      border-color: var(--primary);
-    }
-
-    .slider-btn.prev { left: 16px; }
-    .slider-btn.next { right: 16px; }
-
-    .slider-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 16px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .dot.active {
-      background: var(--primary);
-      width: 24px;
-      border-radius: 10px;
     }
 
     /* ─── FEATURES SECTION ─── */
@@ -679,18 +643,34 @@
   <!-- ─── SLIDER ─── -->
   <section class="slider-section">
     <div class="container">
-      <div class="slider-wrapper">
-        <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
-        <div class="slider-container">
-          <div class="slider-track" id="sliderTrack">
-            <div class="slide"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
-            <div class="slide"><img src="assets/exemplos/acai-premium.jpg" alt="Arte"></div>
-            <div class="slide"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
-            <div class="slide"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
-          </div>
+      <!-- Marquee Infinito - Linha 1 (Esquerda) -->
+      <div class="marquee-wrapper">
+        <div class="marquee-track marquee-left">
+          <div class="marquee-item"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/acai-premium.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
+          <!-- Repetição para efeito infinito -->
+          <div class="marquee-item"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/acai-premium.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
         </div>
-        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+      
+      <!-- Marquee Infinito - Linha 2 (Direita) -->
+      <div class="marquee-wrapper">
+        <div class="marquee-track marquee-right">
+          <div class="marquee-item"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/acai-premium.jpg" alt="Arte"></div>
+          <!-- Repetição para efeito infinito -->
+          <div class="marquee-item"><img src="assets/exemplos/acai.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/feijoada.png" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/frango.jpg" alt="Arte"></div>
+          <div class="marquee-item"><img src="assets/exemplos/acai-premium.jpg" alt="Arte"></div>
+        </div>
       </div>
     </div>
   </section>
